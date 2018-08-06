@@ -14,6 +14,7 @@ switch (process.argv[2]) {
         var params = { screen_name: 'ricardobentin' };
         client.get('statuses/user_timeline', params, function (error, tweets, response) {
             if (!error && response.statusCode === 200) {
+                console.log("\n********************* Twitter Output Below *********************\n")
                 for (var i = 0; i < 20; i++) {
                     console.log(`Tweet Number. ${i}: ${tweets[i].text}`);
                 }
