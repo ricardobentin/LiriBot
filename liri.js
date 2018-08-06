@@ -11,12 +11,12 @@ var spotify = new Spotify(keys.spotify);
 
 switch (process.argv[2]) {
     case "my-tweets":
-        var params = { screen_name: 'ricardobentin' };
+        var params = { screen_name: 'BacanoNano' };
         client.get('statuses/user_timeline', params, function (error, tweets, response) {
             if (!error && response.statusCode === 200) {
                 console.log("\n********************* Twitter Output Below *********************\n")
                 for (var i = 0; i < 20; i++) {
-                    console.log(`Tweet Number. ${i}: ${tweets[i].text}`);
+                    console.log(`Tweet Number. ${20-i}: ${tweets[i].text}`);
                 }
             }
         });
@@ -52,9 +52,6 @@ switch (process.argv[2]) {
                 console.log("Song Name:", data.tracks.items[0].name);
                 console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
                 console.log("Album:", data.tracks.items[0].album.name);
-                // console.log(data.tracks.items);
-
-
             });
 
         }
