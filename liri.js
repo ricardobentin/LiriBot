@@ -16,7 +16,7 @@ switch (process.argv[2]) {
             if (!error && response.statusCode === 200) {
                 console.log("\n********************* Twitter Output Below *********************\n")
                 for (var i = 0; i < 20; i++) {
-                    console.log(`Tweet Number. ${20-i}: ${tweets[i].text}`);
+                    console.log(`Tweet Number. ${20 - i}: ${tweets[i].text}`);
                 }
             }
         });
@@ -54,6 +54,73 @@ switch (process.argv[2]) {
                 console.log("Album:", data.tracks.items[0].album.name);
             });
 
+        }
+        break;
+    case "movie-this":
+        if (process.argv[3] === undefined) {
+            // Grab or assemble the movie name and store it in a variable called "movieName"
+            var movieName = "Mr. Nobody";
+
+            // Then run a request to the OMDB API with the movie specified
+            var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+
+
+            // This line is just to help us debug against the actual URL.
+            console.log(queryUrl);
+
+            // Then create a request to the queryUrl
+            request(queryUrl, function (error, response, body) {
+                //console.log the response to see what the JSON looks like
+                // console.log("This is response:", response);
+                // If the request is successful
+                if (!error && response.statusCode === 200) {
+                    console.log("\n********************* OMDB Output Below *********************\n")
+                    console.log("**Alert**: You did not enter a movie title.")
+                    console.log("Movie Title: ", JSON.parse(body).Title);
+                    console.log("Year of Release: ", JSON.parse(body).Year);
+                    console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
+                    console.log("Rotten Tomatoes Rating: ", JSON.parse(body).Ratings[1].Value);
+                    console.log("Country Where Movie Was Produced: ", JSON.parse(body).Country);
+                    console.log("Movie Language: ", JSON.parse(body).Language);
+                    console.log("Movie Plot: ", JSON.parse(body).Plot);
+                    console.log("Actors / Actresses in Movie: ", JSON.parse(body).Actors);
+                }
+                else {
+                    console.log("You have error: ", error);
+                }
+            });
+        }
+        else {
+            // Grab or assemble the movie name and store it in a variable called "movieName"
+            var movieName = process.argv[3];
+
+            // Then run a request to the OMDB API with the movie specified
+            var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+
+
+            // This line is just to help us debug against the actual URL.
+            console.log(queryUrl);
+
+            // Then create a request to the queryUrl
+            request(queryUrl, function (error, response, body) {
+                //console.log the response to see what the JSON looks like
+                // console.log("This is response:", response);
+                // If the request is successful
+                if (!error && response.statusCode === 200) {
+                    console.log("\n********************* OMDB Output Below *********************\n")
+                    console.log("Movie Title: ", JSON.parse(body).Title);
+                    console.log("Year of Release: ", JSON.parse(body).Year);
+                    console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
+                    console.log("Rotten Tomatoes Rating: ", JSON.parse(body).Ratings[1].Value);
+                    console.log("Country Where Movie Was Produced: ", JSON.parse(body).Country);
+                    console.log("Movie Language: ", JSON.parse(body).Language);
+                    console.log("Movie Plot: ", JSON.parse(body).Plot);
+                    console.log("Actors / Actresses in Movie: ", JSON.parse(body).Actors);
+                }
+                else {
+                    console.log("You have error: ", error);
+                }
+            });
         }
         break;
     default:
