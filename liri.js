@@ -21,7 +21,7 @@ switch (process.argv[2]) {
             if (!error && response.statusCode === 200) {
                 //appending output to log.txt file
                 //need to use file sync here since i'm using a loop and want things to remain in order
-                fs.appendFileSync("log.txt", `********************* Twitter Output Below *********************`, function (err) {
+                fs.appendFileSync("log.txt", `Command Run: ${process.argv[2]}\n********************* Twitter Output Below *********************`, function (err) {
                     if (err) {
                         console.log(err);
                     }
@@ -29,7 +29,7 @@ switch (process.argv[2]) {
                         console.log("The Log File Was Updated");
                     }
                 });
-                console.log("\n********************* Twitter Output Below *********************\n")
+                console.log(`Command Run: ${process.argv[2]}\n********************* Twitter Output Below *********************\n`)
                 for (var i = 0; i < 20; i++) {
                     //appending output to log.txt file
                     //need to use file sync here since i'm using a loop and want things to remain in order
@@ -55,7 +55,7 @@ switch (process.argv[2]) {
                     return console.log('Error occurred: ' + err);
                 }
                 //appending output to log.txt file
-                fs.appendFile("log.txt", `\n********************* Spotify Output Below via Generic Spotify This Song Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
+                fs.appendFile("log.txt", `\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* Spotify Output Below via Generic Spotify This Song Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
                     // If an error was experienced we will log it.
                     if (err) {
                         console.log(err);
@@ -65,7 +65,7 @@ switch (process.argv[2]) {
                     }
                 });
                 //logging output to console
-                console.log("\n********************* Spotify Output Below *********************\n")
+                console.log(`\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* Spotify Output Below via Generic Spotify This Song Query*********************\n`)
                 console.log("**Alert**: You did not enter a song name. Here is a SIGN that you should enter a song title in your search.")
                 console.log("Artist(s):", data.tracks.items[0].artists[0].name);
                 console.log("Song Name:", data.tracks.items[0].name);
@@ -83,7 +83,7 @@ switch (process.argv[2]) {
                     return console.log('Error occurred: ' + err);
                 }
                 //appending output to log.txt file
-                fs.appendFile("log.txt", `\n********************* Spotify Output Below via Spotify This Song Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
+                fs.appendFile("log.txt", `\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* Spotify Output Below via Spotify This Song Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
                     // If an error was experienced we will log it.
                     if (err) {
                         console.log(err);
@@ -93,7 +93,7 @@ switch (process.argv[2]) {
                     }
                 });
                 //logging output to console
-                console.log("\n********************* Spotify Output Below *********************\n")
+                console.log(`\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* Spotify Output Below *********************\n`)
                 console.log("Artist(s):", data.tracks.items[0].artists[0].name);
                 console.log("Song Name:", data.tracks.items[0].name);
                 console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
@@ -118,7 +118,7 @@ switch (process.argv[2]) {
                 // If the request is successful
                 if (!error && response.statusCode === 200) {
                     //appending output to log.txt file
-                    fs.appendFile("log.txt", `\n********************* OMDB Output Below via Generic Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry(ies) Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language(s): ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
+                    fs.appendFile("log.txt", `\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* OMDB Output Below via Generic Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry(ies) Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language(s): ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
                         // If an error was experienced we will log it.
                         if (err) {
                             console.log(err);
@@ -129,7 +129,7 @@ switch (process.argv[2]) {
 
                     });
                     //logging output to console
-                    console.log("\n********************* OMDB Output Below via Generic Movie This Query*********************\n")
+                    console.log(`\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* OMDB Output Below via Generic Movie This Query*********************\n`)
                     console.log("**Alert**: You did not enter a movie title.")
                     console.log("Movie Title: ", JSON.parse(body).Title);
                     console.log("Year of Release: ", JSON.parse(body).Year);
@@ -159,7 +159,7 @@ switch (process.argv[2]) {
                 // If the request is successful
                 if (!error && response.statusCode === 200) {
                     //appending output to log.txt file
-                    fs.appendFile("log.txt", `\n********************* OMDB Output Below via Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
+                    fs.appendFile("log.txt", `\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* OMDB Output Below via Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
                         // If an error was experienced we will log it.
                         if (err) {
                             console.log(err);
@@ -170,7 +170,7 @@ switch (process.argv[2]) {
 
                     });
                     //logging output to console
-                    console.log("\n********************* OMDB Output Below via Movie This Query*********************\n")
+                    console.log(`\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* OMDB Output Below via Movie This Query*********************\n`)
                     console.log("Movie Title: ", JSON.parse(body).Title);
                     console.log("Year of Release: ", JSON.parse(body).Year);
                     console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
@@ -208,7 +208,7 @@ switch (process.argv[2]) {
                             return console.log('Error occurred: ' + err);
                         }
                         //appending output to log.txt file
-                        fs.appendFile("log.txt", `\n********************* Spotify Output Below via Do What It Says Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
+                        fs.appendFile("log.txt", `\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* Spotify Output Below via Do What It Says Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
                             // If an error was experienced we will log it.
                             if (err) {
                                 console.log(err);
@@ -218,7 +218,7 @@ switch (process.argv[2]) {
                             }
                         });
                         //logging output to console
-                        console.log("\n********************* Spotify Output Below via Do What It Says Query *********************\n")
+                        console.log(`\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* Spotify Output Below via Do What It Says Query *********************\n`)
                         console.log("Artist(s):", data.tracks.items[0].artists[0].name);
                         console.log("Song Name:", data.tracks.items[0].name);
                         console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
@@ -240,7 +240,7 @@ switch (process.argv[2]) {
                         // If the request is successful
                         if (!error && response.statusCode === 200) {
                             //appending output to log.txt file
-                            fs.appendFile("log.txt", `\n********************* OMDB Output Below via Do What It Says Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
+                            fs.appendFile("log.txt", `\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* OMDB Output Below via Do What It Says Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
                                 // If an error was experienced we will log it.
                                 if (err) {
                                     console.log(err);
@@ -250,7 +250,7 @@ switch (process.argv[2]) {
                                 }
                             });
                             //logging output to console
-                            console.log("\n********************* OMDB Output Below via Do What It Says Query *********************\n")
+                            console.log(`\nCommand Run: ${process.argv[2]} '${process.argv[3]}'\n********************* OMDB Output Below via Do What It Says Query *********************\n`)
                             console.log("Movie Title: ", JSON.parse(body).Title);
                             console.log("Year of Release: ", JSON.parse(body).Year);
                             console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
@@ -266,7 +266,7 @@ switch (process.argv[2]) {
                     });
                     break;
                 default:
-                //catch all error message in case the random.txt file has somethign other than spotify-this-song or movie-this @dataArr[0]
+                    //catch all error message in case the random.txt file has somethign other than spotify-this-song or movie-this @dataArr[0]
                     console.log("The Random TXT file does not support this entry, please try again.");
             }
         });
