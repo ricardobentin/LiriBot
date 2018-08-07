@@ -1,14 +1,17 @@
 //to read and set any environment variables with the dotenv package
 require("dotenv").config();
+// requiring the request node package and saving it as a variable
 var request = require("request");
-//importing the keys
+//importing the keys.js and what it is exporting
 var keys = require("./keys.js");
+//requiring the twitter node package and saving it to a variable
 var Twitter = require('twitter')
+//requiring the spotify node package and saving it to a variable
 var Spotify = require('node-spotify-api');
-
+//saving both the twitter and spotify keys as variables
 var client = new Twitter(keys.twitter);
 var spotify = new Spotify(keys.spotify);
-
+//sitch/case logic for what happens when the user types in a command after node liri.js
 switch (process.argv[2]) {
     case "my-tweets":
         var params = { screen_name: 'BacanoNano' };
@@ -35,8 +38,6 @@ switch (process.argv[2]) {
                 console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
                 console.log("Album:", data.tracks.items[0].album.name);
                 // console.log(data.tracks.items);
-
-
             });
         }
         else {
@@ -53,16 +54,17 @@ switch (process.argv[2]) {
                 console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
                 console.log("Album:", data.tracks.items[0].album.name);
             });
-
         }
         break;
     case "movie-this":
+        var movieName = "";
+        var queryUrl = "";
         if (process.argv[3] === undefined) {
             // Grab or assemble the movie name and store it in a variable called "movieName"
-            var movieName = "Mr. Nobody";
+            movieName = "Mr. Nobody";
 
             // Then run a request to the OMDB API with the movie specified
-            var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+            queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
 
 
             // This line is just to help us debug against the actual URL.
@@ -92,10 +94,10 @@ switch (process.argv[2]) {
         }
         else {
             // Grab or assemble the movie name and store it in a variable called "movieName"
-            var movieName = process.argv[3];
+            movieName = process.argv[3];
 
             // Then run a request to the OMDB API with the movie specified
-            var queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+            queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
 
 
             // This line is just to help us debug against the actual URL.
