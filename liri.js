@@ -19,9 +19,25 @@ switch (process.argv[2]) {
         var params = { screen_name: 'BacanoNano' };
         client.get('statuses/user_timeline', params, function (error, tweets, response) {
             if (!error && response.statusCode === 200) {
+                fs.appendFileSync("log.txt", `********************* Twitter Output Below *********************`, function (err) {
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log("The Log File Was Updated");
+                    }
+                });
                 console.log("\n********************* Twitter Output Below *********************\n")
                 for (var i = 0; i < 20; i++) {
-                    console.log(`Tweet Number. ${20 - i}: ${tweets[i].text}`);
+                    fs.appendFileSync("log.txt", `\nTweet Number ${20 - i}: ${tweets[i].text}`, function (err) {
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            console.log("The Log File Was Updated");
+                        }
+                    });
+                    console.log(`Tweet Number ${20 - i}: ${tweets[i].text}`);
                 }
             }
         });
@@ -33,6 +49,15 @@ switch (process.argv[2]) {
                 if (err) {
                     return console.log('Error occurred: ' + err);
                 }
+                fs.appendFile("log.txt", `\n********************* Spotify Output Below via Generic Spotify This Song Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
+                    // If an error was experienced we will log it.
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log("The Log File Was Updated");
+                    }
+                });
                 console.log("\n********************* Spotify Output Below *********************\n")
                 console.log("**Alert**: You did not enter a song name. Here is a SIGN that you should enter a song title in your search.")
                 console.log("Artist(s):", data.tracks.items[0].artists[0].name);
@@ -50,6 +75,15 @@ switch (process.argv[2]) {
                 if (err) {
                     return console.log('Error occurred: ' + err);
                 }
+                fs.appendFile("log.txt", `\n********************* Spotify Output Below via Spotify This Song Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
+                    // If an error was experienced we will log it.
+                    if (err) {
+                        console.log(err);
+                    }
+                    else {
+                        console.log("The Log File Was Updated");
+                    }
+                });
                 console.log("\n********************* Spotify Output Below *********************\n")
                 console.log("Artist(s):", data.tracks.items[0].artists[0].name);
                 console.log("Song Name:", data.tracks.items[0].name);
@@ -78,7 +112,17 @@ switch (process.argv[2]) {
                 // console.log("This is response:", response);
                 // If the request is successful
                 if (!error && response.statusCode === 200) {
-                    console.log("\n********************* OMDB Output Below *********************\n")
+                    fs.appendFile("log.txt", `\n********************* OMDB Output Below via Generic Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
+                        // If an error was experienced we will log it.
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            console.log("The Log File Was Updated");
+                        }
+
+                    });
+                    console.log("\n********************* OMDB Output Below via Generic Movie This Query*********************\n")
                     console.log("**Alert**: You did not enter a movie title.")
                     console.log("Movie Title: ", JSON.parse(body).Title);
                     console.log("Year of Release: ", JSON.parse(body).Year);
@@ -111,7 +155,17 @@ switch (process.argv[2]) {
                 // console.log("This is response:", response);
                 // If the request is successful
                 if (!error && response.statusCode === 200) {
-                    console.log("\n********************* OMDB Output Below *********************\n")
+                    fs.appendFile("log.txt", `\n********************* OMDB Output Below via Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
+                        // If an error was experienced we will log it.
+                        if (err) {
+                            console.log(err);
+                        }
+                        else {
+                            console.log("The Log File Was Updated");
+                        }
+
+                    });
+                    console.log("\n********************* OMDB Output Below via Movie This Query*********************\n")
                     console.log("Movie Title: ", JSON.parse(body).Title);
                     console.log("Year of Release: ", JSON.parse(body).Year);
                     console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
@@ -150,7 +204,16 @@ switch (process.argv[2]) {
                         if (err) {
                             return console.log('Error occurred: ' + err);
                         }
-                        console.log("\n********************* Spotify Output Below *********************\n")
+                        fs.appendFile("log.txt", `\n********************* Spotify Output Below via Do What It Says Query*********************\nArtist(s): ${data.tracks.items[0].artists[0].name}\nSong Name: ${data.tracks.items[0].name}\nPreview Link: ${data.tracks.items[0].external_urls.spotify}\nAlbum: ${data.tracks.items[0].album.name}`, function (err) {
+                            // If an error was experienced we will log it.
+                            if (err) {
+                                console.log(err);
+                            }
+                            else {
+                                console.log("The Log File Was Updated");
+                            }
+                        });
+                        console.log("\n********************* Spotify Output Below via Do What It Says Query *********************\n")
                         console.log("Artist(s):", data.tracks.items[0].artists[0].name);
                         console.log("Song Name:", data.tracks.items[0].name);
                         console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
@@ -175,7 +238,18 @@ switch (process.argv[2]) {
                         // console.log("This is response:", response);
                         // If the request is successful
                         if (!error && response.statusCode === 200) {
-                            console.log("\n********************* OMDB Output Below *********************\n")
+                            //code to write output to the log file
+                            fs.appendFile("log.txt", `\n********************* OMDB Output Below via Do What It Says Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
+                                // If an error was experienced we will log it.
+                                if (err) {
+                                    console.log(err);
+                                }
+                                else {
+                                    console.log("The Log File Was Updated");
+                                }
+
+                            });
+                            console.log("\n********************* OMDB Output Below via Do What It Says Query *********************\n")
                             console.log("Movie Title: ", JSON.parse(body).Title);
                             console.log("Year of Release: ", JSON.parse(body).Year);
                             console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
@@ -199,4 +273,6 @@ switch (process.argv[2]) {
     default:
         console.log(`You ran a case you haven't configured yet`);
 }
+
+
 
