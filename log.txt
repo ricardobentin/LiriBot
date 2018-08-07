@@ -60,4 +60,44 @@ Tweet Number 5: https://t.co/pgeABNgjkX
 Tweet Number 4: ain't nobody got time for that!
 Tweet Number 3: there ain't nothing wrong... with coding a liri bot!
 Tweet Number 2: 140 characters is tough to get the full message across!
-Tweet Number 1: The weather is amazing!
+Tweet Number 1: The weather is amazing!********************* Twitter Output Below *********************
+Tweet Number 20: 20!
+Tweet Number 19: 1
+Tweet Number 18: 2
+Tweet Number 17: 3
+Tweet Number 16: 4
+Tweet Number 15: 5
+Tweet Number 14: 6
+Tweet Number 13: 7
+Tweet Number 12: 8
+Tweet Number 11: 9
+Tweet Number 10: bootstrap ftw!
+Tweet Number 9: its 4:31 pm
+Tweet Number 8: 156
+Tweet Number 7: 12
+Tweet Number 6: precisely what i'm doing right now: https://t.co/Wc2VCk9w1W
+Tweet Number 5: https://t.co/pgeABNgjkX
+Tweet Number 4: ain't nobody got time for that!
+Tweet Number 3: there ain't nothing wrong... with coding a liri bot!
+Tweet Number 2: 140 characters is tough to get the full message across!
+Tweet Number 1: The weather is amazing!********************* Twitter Output Below *********************
+Tweet Number 20: 20! created on: Mon Aug 06 20:32:55 +0000 2018
+Tweet Number 19: 1 created on: Mon Aug 06 20:32:51 +0000 2018
+Tweet Number 18: 2 created on: Mon Aug 06 20:32:47 +0000 2018
+Tweet Number 17: 3 created on: Mon Aug 06 20:32:44 +0000 2018
+Tweet Number 16: 4 created on: Mon Aug 06 20:32:41 +0000 2018
+Tweet Number 15: 5 created on: Mon Aug 06 20:32:39 +0000 2018
+Tweet Number 14: 6 created on: Mon Aug 06 20:32:36 +0000 2018
+Tweet Number 13: 7 created on: Mon Aug 06 20:32:33 +0000 2018
+Tweet Number 12: 8 created on: Mon Aug 06 20:32:31 +0000 2018
+Tweet Number 11: 9 created on: Mon Aug 06 20:32:29 +0000 2018
+Tweet Number 10: bootstrap ftw! created on: Mon Aug 06 20:32:17 +0000 2018
+Tweet Number 9: its 4:31 pm created on: Mon Aug 06 20:31:59 +0000 2018
+Tweet Number 8: 156 created on: Mon Aug 06 20:31:49 +0000 2018
+Tweet Number 7: 12 created on: Mon Aug 06 20:31:46 +0000 2018
+Tweet Number 6: precisely what i'm doing right now: https://t.co/Wc2VCk9w1W created on: Mon Aug 06 20:29:50 +0000 2018
+Tweet Number 5: https://t.co/pgeABNgjkX created on: Mon Aug 06 20:28:35 +0000 2018
+Tweet Number 4: ain't nobody got time for that! created on: Mon Aug 06 20:27:00 +0000 2018
+Tweet Number 3: there ain't nothing wrong... with coding a liri bot! created on: Mon Aug 06 20:26:43 +0000 2018
+Tweet Number 2: 140 characters is tough to get the full message across! created on: Mon Aug 06 20:26:24 +0000 2018
+Tweet Number 1: The weather is amazing! created on: Mon Aug 06 20:26:10 +0000 2018

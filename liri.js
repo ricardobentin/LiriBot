@@ -31,7 +31,7 @@ switch (process.argv[2]) {
                 console.log("\n********************* Twitter Output Below *********************\n")
                 for (var i = 0; i < 20; i++) {
                     //appending output to log.txt file
-                    fs.appendFileSync("log.txt", `\nTweet Number ${20 - i}: ${tweets[i].text}`, function (err) {
+                    fs.appendFileSync("log.txt", `\nTweet Number ${20 - i}: ${tweets[i].text} Tweeted on: ${tweets[i].created_at}`, function (err) {
                         if (err) {
                             console.log(err);
                         }
@@ -40,7 +40,7 @@ switch (process.argv[2]) {
                         }
                     });
                     //logging output to console
-                    console.log(`Tweet Number ${20 - i}: ${tweets[i].text}`);
+                    console.log(`Tweet Number ${20 - i}: ${tweets[i].text} Tweeted on: ${tweets[i].created_at}`);
                 }
             }
         });
