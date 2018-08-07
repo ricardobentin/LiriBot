@@ -20,6 +20,7 @@ switch (process.argv[2]) {
         client.get('statuses/user_timeline', params, function (error, tweets, response) {
             if (!error && response.statusCode === 200) {
                 //appending output to log.txt file
+                //need to use file sync here since i'm using a loop and want things to remain in order
                 fs.appendFileSync("log.txt", `********************* Twitter Output Below *********************`, function (err) {
                     if (err) {
                         console.log(err);
@@ -31,6 +32,7 @@ switch (process.argv[2]) {
                 console.log("\n********************* Twitter Output Below *********************\n")
                 for (var i = 0; i < 20; i++) {
                     //appending output to log.txt file
+                    //need to use file sync here since i'm using a loop and want things to remain in order
                     fs.appendFileSync("log.txt", `\nTweet Number ${20 - i}: ${tweets[i].text} Tweeted on: ${tweets[i].created_at}`, function (err) {
                         if (err) {
                             console.log(err);
@@ -116,7 +118,7 @@ switch (process.argv[2]) {
                 // If the request is successful
                 if (!error && response.statusCode === 200) {
                     //appending output to log.txt file
-                    fs.appendFile("log.txt", `\n********************* OMDB Output Below via Generic Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language: ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
+                    fs.appendFile("log.txt", `\n********************* OMDB Output Below via Generic Movie This Query *********************\nMovie Title: ${JSON.parse(body).Title}\nYear of Release: ${JSON.parse(body).Year}\nIMDB Rating: ${JSON.parse(body).Ratings[0].Value}\nRotten Tomatoes Rating: ${JSON.parse(body).Ratings[1].Value}\nCountry(ies) Where Movie Was Produced: ${JSON.parse(body).Country}\nMovie Language(s): ${JSON.parse(body).Language}\nMovie Plot: ${JSON.parse(body).Plot}\nActors / Actresses in Movie:${JSON.parse(body).Actors}`, function (err) {
                         // If an error was experienced we will log it.
                         if (err) {
                             console.log(err);
@@ -133,8 +135,8 @@ switch (process.argv[2]) {
                     console.log("Year of Release: ", JSON.parse(body).Year);
                     console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
                     console.log("Rotten Tomatoes Rating: ", JSON.parse(body).Ratings[1].Value);
-                    console.log("Country Where Movie Was Produced: ", JSON.parse(body).Country);
-                    console.log("Movie Language: ", JSON.parse(body).Language);
+                    console.log("Country(ies) Where Movie Was Produced: ", JSON.parse(body).Country);
+                    console.log("Movie Language(s): ", JSON.parse(body).Language);
                     console.log("Movie Plot: ", JSON.parse(body).Plot);
                     console.log("Actors / Actresses in Movie: ", JSON.parse(body).Actors);
                 }
