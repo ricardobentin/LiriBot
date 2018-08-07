@@ -1,5 +1,7 @@
 //to read and set any environment variables with the dotenv package
 require("dotenv").config();
+//require file system to read or write to files
+var fs = require("fs");
 // requiring the request node package and saving it as a variable
 var request = require("request");
 //importing the keys.js and what it is exporting
@@ -124,6 +126,75 @@ switch (process.argv[2]) {
                 }
             });
         }
+        break;
+    case "do-what-it-says":
+        fs.readFile("random.txt", "utf8", function (error, data) {
+
+            // If the code experiences any errors it will log the error to the console.
+            if (error) {
+                return console.log(error);
+            }
+
+            // We will then print the contents of data
+            console.log(data);
+
+            // Then split it by commas (to make it more readable)
+            var dataArr = data.split(",");
+
+            // We will then re-display the content as an array for later use.
+            console.log(dataArr);
+            switch (`${dataArr[0]}`) {
+                case "spotify-this-song":
+                    spotify.search({ type: 'track', query: dataArr[1], limit: '1' }, function (err, data) {
+
+                        if (err) {
+                            return console.log('Error occurred: ' + err);
+                        }
+                        console.log("\n********************* Spotify Output Below *********************\n")
+                        console.log("Artist(s):", data.tracks.items[0].artists[0].name);
+                        console.log("Song Name:", data.tracks.items[0].name);
+                        console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
+                        console.log("Album:", data.tracks.items[0].album.name);
+                        // console.log(data.tracks.items);
+                    });
+                    break;
+                case "movie-this":
+                    // Grab or assemble the movie name and store it in a variable called "movieName"
+                    movieName = dataArr[1];
+
+                    // Then run a request to the OMDB API with the movie specified
+                    queryUrl = "http://www.omdbapi.com/?t=" + movieName + "&y=&plot=short&apikey=40e9cece";
+
+
+                    // This line is just to help us debug against the actual URL.
+                    console.log(queryUrl);
+
+                    // Then create a request to the queryUrl
+                    request(queryUrl, function (error, response, body) {
+                        //console.log the response to see what the JSON looks like
+                        // console.log("This is response:", response);
+                        // If the request is successful
+                        if (!error && response.statusCode === 200) {
+                            console.log("\n********************* OMDB Output Below *********************\n")
+                            console.log("Movie Title: ", JSON.parse(body).Title);
+                            console.log("Year of Release: ", JSON.parse(body).Year);
+                            console.log("IMDB Rating: ", JSON.parse(body).Ratings[0].Value);
+                            console.log("Rotten Tomatoes Rating: ", JSON.parse(body).Ratings[1].Value);
+                            console.log("Country Where Movie Was Produced: ", JSON.parse(body).Country);
+                            console.log("Movie Language: ", JSON.parse(body).Language);
+                            console.log("Movie Plot: ", JSON.parse(body).Plot);
+                            console.log("Actors / Actresses in Movie: ", JSON.parse(body).Actors);
+                        }
+                        else {
+                            console.log("You have error: ", error);
+                        }
+                    });
+                    break;
+                default:
+                    console.log("The Random TXT file does not support this entry, please try again.");
+            }
+        });
+
         break;
     default:
         console.log(`You ran a case you haven't configured yet`);
