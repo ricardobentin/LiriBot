@@ -1,4 +1,3 @@
-
 ********************* OMDB Output Below via Movie This Query *********************
 Movie Title: You've Got Mail
 Year of Release: 1998
