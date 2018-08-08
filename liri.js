@@ -71,7 +71,7 @@ switch (process.argv[2]) {
                 console.log("Song Name:", data.tracks.items[0].name);
                 console.log("Preview Link:", data.tracks.items[0].external_urls.spotify);
                 console.log("Album:", data.tracks.items[0].album.name);
-                // console.log(data.tracks.items);
+                // console.log(data.tracks.items[0].artists);
             });
         }
         else {

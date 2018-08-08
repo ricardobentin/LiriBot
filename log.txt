@@ -82,3 +82,27 @@ Country Where Movie Was Produced: USA
 Movie Language: English, Russian, Hindi
 Movie Plot: Earth's mightiest heroes must come together and learn to fight as a team if they are going to stop the mischievous Loki and his alien army from enslaving humanity.
 Actors / Actresses in Movie:Robert Downey Jr., Chris Evans, Scarlett Johansson, Chris Hemsworth
+=============================================================================================================================
+Command Run: spotify-this-song 'all the small things'
+
+********************* Spotify Output Below via Spotify This Song Query*********************
+Artist(s): blink-182
+Song Name: All The Small Things
+Preview Link: https://open.spotify.com/track/7yCPwWs66K8Ba5lFuU2bcx
+Album: Enema Of The State
+=============================================================================================================================
+Command Run: spotify-this-song 'undefined'
+
+********************* Spotify Output Below via Generic Spotify This Song Query*********************
+Artist(s): Ace of Base
+Song Name: The Sign
+Preview Link: https://open.spotify.com/track/0hrBpAOgrt8RXigk83LLNE
+Album: The Sign (US Album) [Remastered]
+=============================================================================================================================
+Command Run: spotify-this-song 'undefined'
+
+********************* Spotify Output Below via Generic Spotify This Song Query*********************
+Artist(s): Ace of Base
+Song Name: The Sign
+Preview Link: https://open.spotify.com/track/0hrBpAOgrt8RXigk83LLNE
+Album: The Sign (US Album) [Remastered]
